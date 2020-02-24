@@ -1,0 +1,55 @@
+﻿@using StokTakip.Models.Entity
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>Ürün ID</th>
+            <td>Ürün Adı</td>
+            <td>Marka</td>
+            <td>Kategori</td>
+            <td>Fiyat</td>
+            <td>Stok</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var urn in Model)
+        {
+
+            <tr>
+
+                <td> @urn.urunid</td>
+                <td> @urn.urunad</td>
+                <td> @urn.marka</td>
+                <td> @urn.TBLKATEGORILER.kategoriad</td>
+                <td> @urn.fiyat</td>
+                <td> @urn.stok</td>
+                <td><a href="/Urun/Sil/@urn.urunid" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Urun/UrunGetir/@urn.urunid" class="btn btn-success">GÜNCELLE</a></td>
+
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+<a href="/Urun/UrunEkle" class="btn btn-primary">Yeni Ürün Ekle</a>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-html5-1.5.6/fh-3.1.4/datatables.min.js"></script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+<script>
+
+    $('#tbl1').DataTable();
+</script>
